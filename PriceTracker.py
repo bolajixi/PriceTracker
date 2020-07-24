@@ -25,11 +25,10 @@ def main():
     product_info = get_product_info(soup)
     product_price = get_product_price(soup)
 
-    if converted_price < 300000:
+    if product_price < 300000:
         send_email()
-    print(product_title)
-    print(converted_price)
-
+    print(product_info)
+    print(product_price)
 
 def pricetracker():  # todo complete price tracker function
     pass
