@@ -1,4 +1,5 @@
 import bs4  # todo import beautiful soup package
+import requests
 import smtplib
 
 
