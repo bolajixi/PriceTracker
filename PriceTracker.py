@@ -30,9 +30,6 @@ def main():
     print(product_info)
     print(product_price)
 
-def pricetracker():  # todo complete price tracker function
-    pass
 
-
-def send_email():
-    pass
+if __name__ == '__main__':
+    main()
