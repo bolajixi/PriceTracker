@@ -13,6 +13,8 @@ soup = BeautifulSoup(page.content, 'html.parser')
 
 product_title = soup.find('h4', attrs={'class': '_24849_2Ymhg'}).get_text()
 price = soup.find('div', attrs={'class': '_678e4_e6nqh'}).get_text()
+converted_price = float(''.join(price[1:].split(',')))
+
 
 def pricetracker():  # todo complete price tracker function
     pass
