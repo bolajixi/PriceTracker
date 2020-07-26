@@ -25,7 +25,7 @@ def get_email():
     }
     response = requests.request("GET", url, headers=headers)
 
-    print(response.text)
+    domain_list = response.json()
 
 
 def main():
@@ -40,8 +40,8 @@ def main():
     product_info = get_product_info(soup)
     product_price = get_product_price(soup)
 
-    if product_price < 300000:
-        send_email()
+    # if product_price < 300000:
+    get_email()
     print(product_info)
     print(product_price)
 
