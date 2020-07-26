@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 import smtplib
+import config
 
 
 def get_product_info(soupObject):
