@@ -14,6 +14,20 @@ def get_product_price(soupObject):
     converted_price = float(''.join(price[1:].split(',')))
     return converted_price
 
+
+def get_email():
+    TempMail_API_Key = config.TempMail_API_KEY
+
+    url = "https://privatix-temp-mail-v1.p.rapidapi.com/request/domains/"
+    headers = {
+        'x-rapidapi-host': "privatix-temp-mail-v1.p.rapidapi.com",
+        'x-rapidapi-key': TempMail_API_Key
+    }
+    response = requests.request("GET", url, headers=headers)
+
+    print(response.text)
+
+
 def main():
     URL = 'https://www.konga.com/product/apple-iphone-11-128gb-rom-4gb-ram-ios-6-1-white-4823239'
 
