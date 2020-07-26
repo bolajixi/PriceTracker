@@ -27,6 +27,7 @@ def get_email():
     response = requests.request("GET", url, headers=headers)
 
     domain_list = response.json()
+    return 'pricetracker' + random.choice(domain_list)
 
 
 def main():
