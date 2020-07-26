@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import smtplib
 import config
+import random
 
 
 def get_product_info(soupObject):
