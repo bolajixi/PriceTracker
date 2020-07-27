@@ -7,13 +7,9 @@ import random
 
 def get_product_info(soupObject):
     product_title = soupObject.find('h4', attrs={'class': '_24849_2Ymhg'}).get_text()
-    return product_title
-
-
-def get_product_price(soupObject):
     price = soupObject.find('div', attrs={'class': '_678e4_e6nqh'}).get_text()
     converted_price = float(''.join(price[1:].split(',')))
-    return converted_price
+    return product_title, converted_price
 
 
 def get_email():
@@ -39,8 +35,7 @@ def main():
     page = requests.get(URL, headers=headers)
     soup = BeautifulSoup(page.content, 'html.parser')
 
-    product_info = get_product_info(soup)
-    product_price = get_product_price(soup)
+    product_info, product_price = get_product_info(soup)
 
     target_price = input('What is your target price: ')
     if target_price >= product_price:
