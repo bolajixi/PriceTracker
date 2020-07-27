@@ -42,8 +42,14 @@ def main():
     product_info = get_product_info(soup)
     product_price = get_product_price(soup)
 
-    # if product_price < 300000:
-    get_email()
+    target_price = input('What is your target price: ')
+    if target_price >= product_price:
+        print('Target Price cannot be same or greater than product price')
+        target_price = input('Input a new target price: ')
+    elif product_price < target_price:
+        send_email()
+
+
     print(product_info)
     print(product_price)
 
