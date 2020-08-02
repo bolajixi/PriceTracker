@@ -39,7 +39,9 @@ def get_email():
 
 
 def main():
-    URL = 'https://www.konga.com/product/apple-iphone-11-128gb-rom-4gb-ram-ios-6-1-white-4823239'
+    args = parse_args()
+    # URL = 'https://www.konga.com/product/apple-iphone-11-128gb-rom-4gb-ram-ios-6-1-white-4823239'
+    URL = args.URL
 
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                              'Chrome/84.0.4147.89 Safari/537.36 Edg/84.0.522.40'}
@@ -49,7 +51,9 @@ def main():
 
     product_info, product_price = get_product_info(soup)
 
-    target_price = input('What is your target price: ')
+    print('Starting to track prices')
+    # target_price = input('What is your target price: ')
+    target_price = args.set_target
     if target_price >= product_price:
         print('Target Price cannot be same or greater than product price')
         target_price = input('Input a new target price: ')
