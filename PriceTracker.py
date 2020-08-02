@@ -3,6 +3,7 @@ import requests
 import smtplib
 import config
 import random
+import argparse
 
 
 def get_product_info(soupObject):
