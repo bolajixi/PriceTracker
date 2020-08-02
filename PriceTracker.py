@@ -61,8 +61,8 @@ def main():
         send_email()
 
 
-    print(product_info)
-    print(product_price)
+    print('Product Name:',product_info)
+    print('Product Price:', '₦ '+format(product_price, ','))
 
 
 if __name__ == '__main__':
