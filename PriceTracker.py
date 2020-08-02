@@ -6,6 +6,17 @@ import random
 import argparse
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(description='Price tracker for retail goods')
+
+    parser.add_argument('--set_target', type=float, help='Set the targeted base price you want')
+    parser.add_argument('--URL', type=str, help="Link to item you'd like to track")
+    parser.add_argument('--email', type=str, help="Email you'd like to be notified")
+    parser.add_argument('--mobile', type=int, help="Mobile number you'd like to be notified")
+
+    return parser.parse_args()
+
+
 def get_product_info(soupObject):
     product_title = soupObject.find('h4', attrs={'class': '_24849_2Ymhg'}).get_text()
     price = soupObject.find('div', attrs={'class': '_678e4_e6nqh'}).get_text()
