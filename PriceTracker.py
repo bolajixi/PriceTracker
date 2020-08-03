@@ -81,9 +81,16 @@ def main():
 
     target_price = product_price * (1 - target_percent)
 
+    print('{:_^65s}'.format('Product Information'))
     print('Product Name:', product_info)
-    print('Product Price:', '₦ '+format(product_price, ','))
-    print('Target Price:', '₦ '+format(target_price, ',.2f'))
+    print('Product Price:', '₦ ' + format(product_price, ','))
+    print('Target Price:', '₦ ' + format(target_price, ',.2f'))
+
+    schedule.every(20).seconds.do(check_price, URL, target_price)
+
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
 
 
 if __name__ == '__main__':
