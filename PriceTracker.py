@@ -10,7 +10,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='Price tracker for retail goods')
 
     parser.add_argument('URL', type=str, help="Link to item you will like to track")
-    parser.add_argument('set_target', type=float, help='Set the targeted base price you want')
+    parser.add_argument('--set_target_percent', type=float, help='Set the target percent you want', default=5)
     parser.add_argument('--email', type=str, help="Email you'd like to be notified")
     parser.add_argument('--mobile', type=int, help="Mobile number you'd like to be notified")
 
