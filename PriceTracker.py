@@ -1,9 +1,12 @@
-from bs4 import BeautifulSoup
-import requests
-import smtplib
-import config
-import random
 import argparse
+import random
+import schedule
+import smtplib
+
+import requests
+from bs4 import BeautifulSoup
+
+import config
 
 
 def parse_args():
