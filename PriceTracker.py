@@ -62,6 +62,7 @@ def main():
 
     print('Product Name:',product_info)
     print('Product Price:', '₦ '+format(product_price, ','))
+    print('Target Price:', '₦ '+format(target_price, ',.2f'))
 
 
 if __name__ == '__main__':
