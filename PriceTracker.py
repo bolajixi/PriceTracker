@@ -41,7 +41,6 @@ def get_email():
 def main():
     args = parse_args()
     URL = args.URL
-
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                              'Chrome/84.0.4147.89 Safari/537.36 Edg/84.0.522.40'}
 
@@ -50,17 +49,11 @@ def main():
 
     product_info, product_price = get_product_info(soup)
 
-    print('Starting to track prices\n')
-    # target_price = input('What is your target price: ')
-    target_price = args.set_target
-    if target_price >= product_price:
-        print('Target Price cannot be same or greater than product price '+'(₦ '+format(product_price, ',')+')')
-        target_price = input('Input a new target price: ')
-    elif product_price < target_price:
-        send_email()
+    target_price = product_price * (1 - target_percent)
+    if product_price < target_price:
+        print('...')
 
-
-    print('Product Name:',product_info)
+    print('Product Name:', product_info)
     print('Product Price:', '₦ '+format(product_price, ','))
     print('Target Price:', '₦ '+format(target_price, ',.2f'))
 
