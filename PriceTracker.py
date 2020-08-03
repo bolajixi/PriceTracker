@@ -42,20 +42,18 @@ def get_email():
     return 'pricetracker' + random.choice(domain_list)
 
 
-def check_price(URL, target_percent):
+def check_price(URL, target_price):
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                              'Chrome/84.0.4147.89 Safari/537.36 Edg/84.0.522.40'}
 
     page = requests.get(URL, headers=headers)
     soup = BeautifulSoup(page.content, 'html.parser')
-    product_info, product_price = get_product_info(soup)
+    _, product_price = get_product_info(soup)
 
-    target_price = product_price * (1 - target_percent)
     if product_price < target_price:
         print('...')
 
-    print('Product Name:', product_info)
-    print('Product Price:', '₦ ' + format(product_price, ','))
+    print('\nCurrent Price:', '₦ ' + format(product_price, ','))
     print('Target Price:', '₦ ' + format(target_price, ',.2f'))
 
 def send_email(email, link):
@@ -74,7 +72,6 @@ def main():
 
     target_percent /= 100
 
-    URL = args.URL
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                              'Chrome/84.0.4147.89 Safari/537.36 Edg/84.0.522.40'}
 
@@ -83,8 +80,6 @@ def main():
     product_info, product_price = get_product_info(soup)
 
     target_price = product_price * (1 - target_percent)
-    if product_price < target_price:
-        print('...')
 
     print('Product Name:', product_info)
     print('Product Price:', '₦ '+format(product_price, ','))
