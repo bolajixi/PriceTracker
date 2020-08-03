@@ -42,11 +42,31 @@ def get_email():
     return 'pricetracker' + random.choice(domain_list)
 
 
+def check_price(URL, target_percent):
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                             'Chrome/84.0.4147.89 Safari/537.36 Edg/84.0.522.40'}
+
+    page = requests.get(URL, headers=headers)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    product_info, product_price = get_product_info(soup)
+
+    target_price = product_price * (1 - target_percent)
+    if product_price < target_price:
+        print('...')
+
+    print('Product Name:', product_info)
+    print('Product Price:', '₦ ' + format(product_price, ','))
+    print('Target Price:', '₦ ' + format(target_price, ',.2f'))
+
+def send_email(email, link):
+    pass
+
+
 def main():
     args = parse_args()
-
     print('Starting to track prices...\n')
 
+    URL = args.URL
     target_percent = args.set_target_percent
     while target_percent > 80:
         print('Set a target percentage between 1% - 80%')
