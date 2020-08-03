@@ -40,13 +40,22 @@ def get_email():
 
 def main():
     args = parse_args()
+
+    print('Starting to track prices...\n')
+
+    target_percent = args.set_target_percent
+    while target_percent > 80:
+        print('Set a target percentage between 1% - 80%')
+        target_percent = float(input('Input new target percent: '))
+
+    target_percent /= 100
+
     URL = args.URL
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                              'Chrome/84.0.4147.89 Safari/537.36 Edg/84.0.522.40'}
 
     page = requests.get(URL, headers=headers)
     soup = BeautifulSoup(page.content, 'html.parser')
-
     product_info, product_price = get_product_info(soup)
 
     target_price = product_price * (1 - target_percent)
